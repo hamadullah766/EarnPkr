@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ61ZH31F1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QZ61ZH31F1');
+</script>
+<title>EarnPkr</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0a1929;color:#e3f2fd;min-height:100vh;padding:20px 15px 100px}
+.navbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;padding-bottom:15px;border-bottom:1px solid #1e3a5f}
+.logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700}
+.nav-login{color:#e3f2fd;font-size:14px;cursor:pointer;padding:8px 18px;border-radius:20px;border:1px solid #2196f340;background:#0d2137;font-weight:500}
+.page{display:none}
+.page.active{display:block}
+h1{font-size:26px;font-weight:700;margin-bottom:10px}
+h1 span{color:#2196f3}
+.subtitle{font-size:13px;color:#90caf9;margin-bottom:25px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:13px;color:#90caf9;margin-bottom:8px;font-weight:500}
+.form-group input{width:100%;padding:14px 18px;background:#0d2137;border:1px solid #1e3a5f;border-radius:12px;color:#e3f2fd;font-size:14px;outline:none}
+.form-group input:focus{border-color:#2196f3}
+.checkbox-group{display:flex;align-items:flex-start;gap:10px;margin-bottom:22px}
+.checkbox-group input{width:18px;height:18px;margin-top:3px;accent-color:#2196f3}
+.checkbox-group label{font-size:12px;color:#90caf9}
+.btn{width:100%;padding:15px;background:linear-gradient(135deg,#2196f3,#1976d2);border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+.btn:disabled{background:#1e3a5f;color:#64b5f6;cursor:not-allowed}
+.bottom-link{text-align:center;margin-top:22px;font-size:13px;color:#90caf9}
+.bottom-link a{color:#2196f3;font-weight:600;cursor:pointer}
+.msg{padding:13px;border-radius:12px;margin-bottom:18px;font-size:13px;text-align:center;display:none}
+.msg.success{background:#2196f315;color:#42a5f5;border:1px solid #2196f340;display:block}
+.msg.error{background:#e74c3c15;color:#e74c3c;border:1px solid #e74c3c40;display:block}
+.welcome-card{background:linear-gradient(135deg,#0d47a1,#0a1929);border-radius:20px;padding:24px;margin-bottom:20px;color:#fff}
+.azadi-tag{font-size:11px;color:#2196f3;font-weight:600;letter-spacing:1px}
+.welcome-name{font-size:22px;font-weight:700;margin:6px 0}
+.welcome-name span{color:#2196f3}
+.welcome-date{font-size:12px;opacity:0.75}
+.vip-badge{display:inline-block;margin-top:12px;padding:6px 14px;border:1px solid #2196f3;border-radius:20px;font-size:12px;font-weight:600;color:#2196f3;background:rgba(33,150,243,0.1)}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.stat-card{background:#0d2137;border:1px solid #1e3a5f;border-radius:16px;padding:18px}
+.stat-icon{font-size:20px;margin-bottom:10px}
+.stat-label{font-size:10px;color:#90caf9;text-transform:uppercase;margin-bottom:6px}
+.stat-value{font-size:22px;font-weight:700}
+.stat-value.green{color:#2196f3}
+.info-card{background:#0d2137;border:1px solid #1e3a5f;border-radius:16px;padding:18px;margin-bottom:16px}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+.info-row:not(:last-child){border-bottom:1px solid #1e3a5f}
+.info-label{font-size:12px;color:#90caf9;text-transform:uppercase}
+.info-value{font-size:15px;font-weight:700}
+.info-value.green{color:#2196f3}
+.tab-bar{position:fixed;bottom:0;left:0;right:0;background:#0d2137;border-top:1px solid #1e3a5f;display:none;justify-content:space-around;padding:10px 0 12px;z-index:100}
+.tab-bar.active{display:flex}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:#64b5f6;cursor:pointer;padding:5px 12px}
+.tab.active{color:#2196f3}
+.tab-icon{font-size:20px}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.refer-card{background:#0d2137;border:1px solid #1e3a5f;border-radius:16px;padding:22px;text-align:center;margin-bottom:16px}
+.refer-code{background:#0a1929;border:2px dashed #42a5f5;border-radius:12px;padding:15px;font-size:18px;font-weight:700;color:#2196f3;margin:15px 0;word-break:break-all}
+.copy-btn{background:#2196f3;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;width:100%}
+.vip-info{background:linear-gradient(135deg,#0d47a1,#0a1929);border-radius:16px;padding:22px;color:#fff;margin-bottom:16px}
+.vip-info h3{font-size:16px;margin-bottom:12px}
+.vip-info p{font-size:12px;line-height:1.7;margin-bottom:8px}
+.vip-info strong{color:#2196f3}
+.withdraw-card{background:#0d2137;border:1px solid #1e3a5f;border-radius:16px;padding:22px;margin-bottom:16px}
+.withdraw-card h3{font-size:16px;margin-bottom:15px}
+.withdraw-card input{width:100%;padding:14px 18px;background:#0a1929;border:1px solid #1e3a5f;border-radius:12px;color:#e3f2fd;font-size:14px;outline:none;margin-bottom:12px}
+.timer-display{font-size:35px;color:#2196f3;font-weight:700;margin:15px 0;text-align:center}
+@keyframes popupFade{0%{opacity:0;transform:translateX(-50%) translateY(-20px) scale(0.8)}20%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}80%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}100%{opacity:0;transform:translateX(-50%) translateY(-30px) scale(0.9)}}
+</style>
+<script data-cfasync="false" src="https://bauval.org/14/b6869c8a4d9a4336331f6a48ee714f3f"></scrip>
+</head>
+<body>
+<script>
+  (function() {
+    var s = document.createElement('script');
+    s.setAttribute('data-cfasync', 'false');
+    s.src = 'https://auctionr.org/4/f93df2a28751a248da4b0fce8e40742a';
+    document.head.appendChild(s);
+  })();
+</scrip>
+
+<div class="navbar" id="mainNavbar">
+  <div class="logo"><div class="logo-icon">★</div>Earn<span>Pkr</span></div>
+  <div class="nav-login" id="navBtn" onclick="toggleAuth()">Login</div>
+</div>
+
+<div class="page active" id="registerPage">
+  <h1>Create your <span>account</span></h1>
+  <p class="subtitle">Pakistan ka apna earning platform.</p>
+  <div id="regMsg" class="msg"></div>
+  <div class="form-group"><label>Username</label><input type="text" id="regUsername" placeholder=""></div>
+  <div class="form-group"><label>Mobile Number (11 digits)</label><input type="tel" id="regMobile" placeholder="03001234567" maxlength="11"></div>
+  <div class="form-group"><label>Email Address</label><input type="email" id="regEmail" placeholder="example@gmail.com"></div>
+  <div class="form-group"><label>Password</label><input type="password" id="regPassword" placeholder="Apna password likho"></div>
+  <div class="form-group" id="refCodeGroup" style="display:none;"><label>Referral Code (locked)</label><input type="text" id="regReferral" readonly style="background:#0d47a130;border-color:#2196f3;color:#2196f3;font-weight:700"></div>
+  <div class="checkbox-group"><input type="checkbox" id="regTerms"><label for="regTerms">Main Terms & Conditions se agree karta hoon</label></div>
+  <button class="btn" onclick="register()">Register Now</button>
+  <div class="bottom-link">Already registered? <a onclick="toggleAuth()">Login here</a></div>
+</div>
+
+<div class="page" id="loginPage">
+  <h1>Welcome <span>back</span></h1>
+  <p class="subtitle">Login karo aur earning continue karo.</p>
+  <div id="loginMsg" class="msg"></div>
+  <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="example@gmail.com"></div>
+  <div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="Apna password likho"></div>
+  <button class="btn" onclick="login()">Login</button>
+  <div class="bottom-link">Account nahi hai? <a onclick="toggleAuth()">Register here</a></div>
+</div>
+
+<div class="page" id="dashboardPage">
+
+  <div class="tab-content active" id="tab-home">
+    <div class="welcome-card" style="position:relative;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div style="flex:1;">
+          <div class="azadi-tag">ASSALAM-O-ALAIKUM</div>
+          <div class="welcome-name">Welcome, <span id="dashUsername">@User</span></div>
+          <div class="welcome-date" id="dashDate">--</div>
+          <div class="vip-badge">👑 VIP <span id="dashVip">0</span></div>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <div onclick="toggleTheme()" id="themeToggle" style="cursor:pointer;padding:8px;background:rgba(33,150,243,0.15);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;">
+            <div style="font-size:22px;" id="themeIcon">🌙</div>
+          </div>
+          <div onclick="openNotifications()" style="position:relative;cursor:pointer;padding:8px;background:rgba(33,150,243,0.15);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;">
+            <div style="font-size:22px;">🔔</div>
+            <span id="notifBadge" style="position:absolute;top:-2px;right:-2px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;display:none;min-width:18px;text-align:center;">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="openWithdraw()" style="margin-bottom:12px;background:linear-gradient(135deg,#f39c12,#e67e22)">💸 Withdraw Money</button>
+
+    <div class="info-card" style="padding:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div style="font-size:13px;font-weight:700;color:#e3f2fd;">🎁 Bonus Code</div>
+        <div style="font-size:10px;color:#90caf9;">Instant Reward</div>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <input type="text" id="bonusCodeInput" placeholder="CODE LIKHO..." style="flex:1;padding:10px 14px;background:#0a1929;border:1px solid #1e3a5f;border-radius:10px;color:#e3f2fd;font-size:12px;outline:none;text-transform:uppercase;font-weight:600;letter-spacing:0.5px;">
+        <button onclick="redeemBonusCode()" style="padding:10px 16px;background:linear-gradient(135deg,#f39c12,#e67e22);border:none;border-radius:10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;">Redeem</button>
+      </div>
+      <div id="bonusMsg" class="msg" style="margin-top:8px;"></div>
+    </div>
+
+    <div class="info-card" style="padding:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#e3f2fd;">💰 Extra Earning</div>
+          <div style="font-size:10px;color:#90caf9;">Click karo aur bonus kamao</div>
+        </div>
+        <button onclick="window.open('https://asiafilm.org/4/220af76dc6d7e542501e51f9feb7c118', '_blank')" style="padding:10px 16px;background:linear-gradient(135deg,#2ecc71,#27ae60);border:none;border-radius:10px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;">Click Here</button>
+      </div>
+    </div>
+
+    <div id="dashMsg" class="msg"></div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon">💵</div><div class="stat-label">Total Balance</div><div class="stat-value">Rs <span id="dashBalance">0</span></div></div>
+      <div class="stat-card"><div class="stat-icon">📥</div><div class="stat-label">Total Withdrawals</div><div class="stat-value">Rs <span id="dashWithdrawals">0</span></div></div>
+      <div class="stat-card"><div class="stat-icon">📢</div><div class="stat-label">Total Ad Earnings</div><div class="stat-value green">Rs <span id="dashAdEarnings">0</span></div></div>
+      <div class="stat-card"><div class="stat-icon">💎</div><div class="stat-label">Total Earned</div><div class="stat-value">Rs <span id="dashTotalEarnings">0</span></div></div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-row"><div class="info-label">VIP Level</div><div class="info-value">VIP <span id="infoVip">0</span></div></div>
+      <div class="info-row"><div class="info-label">Ads Today</div><div class="info-value"><span id="infoAdsToday">0</span> / 25</div></div>
+      <div class="info-row"><div class="info-label">Successful Withdrawals</div><div class="info-value green"><span id="infoWithdrawals">0</span></div></div>
+    </div>
+
+    <div class="info-card">
+      <h3 style="font-size:15px;margin-bottom:12px;">🏆 Top 10 Earners</h3>
+      <div id="leaderboard"><p style="font-size:12px;color:#90caf9;text-align:center;padding:15px;">Loading...</p></div>
+    </div>
+  </div>
+  
+<div class="tab-content" id="tab-ads">
+  <h1>Watch <span>Ads</span></h1>
+  <p class="subtitle">Har ad 30 second ka hai. Rs 1.00 per ad.</p>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-icon">📺</div><div class="stat-label">Ads Baqi</div><div class="stat-value" id="adsLeft">25</div></div>
+    <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-label">Aaj Ki Kamai</div><div class="stat-value green">Rs <span id="todayEarn">0</span></div></div>
+  </div>
+  <div class="info-card" style="text-align:center;padding:25px 20px">
+    <div id="adArea" style="padding:20px 0;color:#90caf9;font-size:13px">Ad yahan load hoga</div>
+    <div class="timer-display" id="timer" style="display:none">30</div>
+    <button class="btn" id="watchBtn" onclick="startAd()">Ad Dekho — Rs 1.00</button>
+    <p style="font-size:11px;color:#64b5f6;margin-top:10px">25 ads per din</p>
+  </div>
+
+  <div class="info-card" style="text-align:center;padding:10px;">
+    <script>
+      atOptions = {
+        'key' : '6e8f11330252d5da53ae922e26865dfd',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://bauval.org/22/6e8f11330252d5da53ae922e26865dfd"></script>
+  </div>
+
+  <div class="info-card" id="whatsappCard">
+    <h3 style="font-size:15px;margin-bottom:12px;">📢 WhatsApp Channel Task</h3>
+    <p style="font-size:12px;color:#90caf9;line-height:1.6;margin-bottom:14px;">3 step: Join karo, screenshot upload karo, verify dabao. Admin check karega, Rs 5 milega.</p>
+    <a href="https://whatsapp.com/channel/0029Vb97DKkAjPXNcMZACC1q" target="_blank" style="text-decoration:none;">
+      <button class="btn" id="joinBtn" onclick="markJoined()" style="background:linear-gradient(135deg,#25d366,#128c7e);margin-bottom:10px;">📱 Join WhatsApp Channel</button>
+    </a>
+    <button class="btn" id="ssBtn" onclick="document.getElementById('ssUpload').click()" style="background:linear-gradient(135deg,#f39c12,#e67e22);margin-bottom:10px;">📤 Screenshot Upload Karo</button>
+    <input type="file" id="ssUpload" accept="image/*" style="display:none;" onchange="uploadScreenshot(event)">
+    <button class="btn" id="verifyBtn" onclick="submitVerify()" style="background:linear-gradient(135deg,#2196f3,#1976d2);">✅ Verify Karo</button>
+    <div id="whatsappStatus" style="margin-top:12px;"></div>
+  </div>
+
+  <div class="info-card" style="padding:10px;">
+    <script async="async" data-cfasync="false" src="https://bauval.org/21/b2956c2bd90908f58db780da51b12902"></script>
+    <div id="container-b2956c2bd90908f58db780da51b12902"></div>
+  </div>
+
+  <div class="info-card">
+    <h3 style="font-size:15px;margin-bottom:12px;">💡 Earning Tips</h3>
+    <p style="font-size:12px;color:#90caf9;line-height:1.8;">
+      • Rozana 25 ads dekho — Rs 25 se Rs 125 tak kamao<br>
+      • Dosto ko refer karo — VIP level barhao<br>
+      • VIP 5 par per ad Rs 5.00 tak milta hai<br>
+      • Withdraw minimum Rs 500 (Rs 495 + Rs 5 tax)
+    </p>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-refer">
+  <h1>Refer <span>& Earn</span></h1>
+  <p class="subtitle">Dosto ko invite karo aur kamao.</p>
+  <div class="refer-card">
+    <div style="font-size:40px">🎁</div>
+    <div style="font-size:13px;color:#90caf9;margin:8px 0">Aapka Referral Link</div>
+    <div class="refer-code" id="referLink">https://earnspkr.netlify.app/?ref=EPUSER</div>
+    <button class="copy-btn" onclick="copyRefer()">📋 Copy Link</button>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card" style="text-align:center"><div class="stat-value" style="color:#2196f3" id="infoReferrals">0</div><div class="stat-label">Total Referrals</div></div>
+    <div class="stat-card" style="text-align:center"><div class="stat-value" style="color:#2196f3">Rs <span id="infoReferEarn">0</span></div><div class="stat-label">Referral Earnings</div></div>
+  </div>
+  <div class="info-card" style="background:linear-gradient(135deg,#0d47a1,#0a1929);border:none;">
+    <h3 style="font-size:15px;margin-bottom:12px;color:#fff;">🎁 Referral Milestones</h3>
+    <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #1e3a5f;"><span style="font-size:13px;color:#fff;">10 Referrals</span><span style="font-size:13px;color:#42a5f5;font-weight:700;">Rs 25</span></div>
+    <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #1e3a5f;"><span style="font-size:13px;color:#fff;">25 Referrals</span><span style="font-size:13px;color:#42a5f5;font-weight:700;">Rs 100</span></div>
+    <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #1e3a5f;"><span style="font-size:13px;color:#fff;">50 Referrals</span><span style="font-size:13px;color:#42a5f5;font-weight:700;">Rs 250</span></div>
+    <div style="display:flex;justify-content:space-between;padding:10px 0;"><span style="font-size:13px;color:#fff;">100 Referrals</span><span style="font-size:13px;color:#42a5f5;font-weight:700;">Rs 500</span></div>
+  </div>
+  <div class="vip-info">
+    <h3>👑 VIP Levels</h3>
+    <p><strong>VIP 0</strong> — 0 referrals — Rs 1.00/ad</p>
+    <p><strong>VIP 1</strong> — 10 referrals — Rs 2.00/ad</p>
+    <p><strong>VIP 2</strong> — 25 referrals — Rs 3.00/ad</p>
+    <p><strong>VIP 3</strong> — 50 referrals — Rs 4.00/ad</p>
+    <p><strong>VIP 4</strong> — 75 referrals — Rs 4.50/ad</p>
+    <p><strong>VIP 5</strong> — 100 referrals — Rs 5.00/ad</p>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-daily">
+  <h1>Daily <span>Reward</span></h1>
+  <p class="subtitle">Rozana login karo aur Rs 5 reward claim karo. 7 din poore karo, Rs 35 bonus pao.</p>
+  <div class="info-card">
+    <h3 style="font-size:15px;margin-bottom:14px;">📅 Aapka Streak: <span id="streakCount" style="color:#2196f3;">0</span>/7 din</h3>
+    <div id="streakGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;"></div>
+    <button class="btn" id="claimDayBtn" onclick="claimDailyReward()" style="background:linear-gradient(135deg,#2196f3,#1976d2);">🎁 Claim Today's Reward (Rs 5)</button>
+    <div id="dailyMsg" class="msg" style="margin-top:12px;"></div>
+  </div>
+  <div class="info-card">
+    <h3 style="font-size:15px;margin-bottom:12px;">💡 Kaise Kaam Karta Hai</h3>
+    <p style="font-size:12px;color:#90caf9;line-height:1.8;">
+      • Rozana login karo aur "Claim" dabao<br>
+      • Har din ka reward Rs 5 hai<br>
+      • 7 din lagatar poore karo — Rs 35 bonus<br>
+      • Agar 1 din miss ho gaya — streak reset<br>
+      • 24 ghante baad next reward milega
+    </p>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-achievements">
+  <h1>My <span>Achievements</span></h1>
+  <div style="position:sticky;top:0;z-index:50;background:#0a1929;padding:10px 0;margin-bottom:12px;">
+    <div id="stickyHeaderBox" style="padding:14px;background:linear-gradient(135deg,#f39c1220,#e67e2220);border:1px solid #f39c1240;border-radius:12px;text-align:center;">
+      <div style="font-size:13px;color:#f39c12;font-weight:700;">🎯 Complete All Tasks and Submit Request for Huge Reward</div>
+      <div style="font-size:12px;color:#90caf9;margin-top:6px;">Progress: <span id="stickyProgress" style="color:#2196f3;font-weight:700;">0 / 25</span> complete</div>
+      <div style="height:6px;background:#1e3a5f;border-radius:3px;margin-top:8px;overflow:hidden;">
+        <div id="stickyBar" style="height:100%;width:0%;background:linear-gradient(90deg,#f39c12,#e67e22);transition:width 0.5s;"></div>
+      </div>
+    </div>
+  </div>
+  <p class="subtitle">Complete all tasks and submit request for huge reward</p>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-icon">🏆</div><div class="stat-label">Completed</div><div class="stat-value" id="achCompleted">0/25</div></div>
+    <div class="stat-card"><div class="stat-icon">💎</div><div class="stat-label">Claimed</div><div class="stat-value green" id="achClaimed">0</div></div>
+  </div>
+  <div class="info-card">
+    <h3 style="font-size:15px;margin-bottom:12px;">🎯 All Achievements</h3>
+    <div id="achievementsList"></div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-notifications">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+    <div onclick="closeNotifications()" style="cursor:pointer;font-size:22px;color:#2196f3;padding:5px;">←</div>
+    <h1 style="margin:0;">My <span>Notifications</span></h1>
+  </div>
+  <p class="subtitle">Aapki saari updates aur alerts.</p>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-icon">🔔</div><div class="stat-label">Total Alerts</div><div class="stat-value" id="notifTotal">0</div></div>
+    <div class="stat-card"><div class="stat-icon">📬</div><div class="stat-label">Unread</div><div class="stat-value green" id="notifUnread">0</div></div>
+  </div>
+  <div class="info-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h3 style="font-size:15px;margin:0;">📨 Recent Alerts</h3>
+      <button onclick="clearAllNotif()" style="padding:6px 12px;background:#0a1929;border:1px solid #1e3a5f;border-radius:8px;color:#90caf9;font-size:11px;font-weight:600;cursor:pointer;">Clear All</button>
+    </div>
+    <div id="notifList"><p style="font-size:12px;color:#90caf9;text-align:center;padding:15px;">Koi notification nahi</p></div>
+  </div>
+  <div class="info-card">
+    <h3 style="font-size:15px;margin-bottom:12px;">💡 Aapko Ye Notifications Milengi</h3>
+    <div style="font-size:12px;color:#90caf9;line-height:1.9;">
+      <div style="padding:6px 0;border-bottom:1px solid #1e3a5f;">💸 <b style="color:#e3f2fd;">Withdraw</b> — approve/reject</div>
+      <div style="padding:6px 0;border-bottom:1px solid #1e3a5f;">📢 <b style="color:#e3f2fd;">WhatsApp Task</b> — verify</div>
+      <div style="padding:6px 0;border-bottom:1px solid #1e3a5f;">🏆 <b style="color:#e3f2fd;">Achievement</b> — reward</div>
+      <div style="padding:6px 0;border-bottom:1px solid #1e3a5f;">🎁 <b style="color:#e3f2fd;">Bonus Code</b> — redeem</div>
+      <div style="padding:6px 0;">💬 <b style="color:#e3f2fd;">Admin Reply</b> — support</div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-withdraw">
+  <h1>Withdraw <span>Money</span></h1>
+  <p class="subtitle">Apni kamai seedha JazzCash ya EasyPaisa mein nikalwao.</p>
+  <div class="info-card" style="background:linear-gradient(135deg,#0d47a1,#0a1929);border:none;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      <div style="font-size:32px;">💸</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#fff;">Fast Withdrawal</div>
+        <div style="font-size:11px;color:#90caf9;">1 working day mein paisa aap ke account mein</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:#90caf9;padding-top:10px;border-top:1px solid #1e3a5f;">
+      <div>⚡ Speed: <span style="color:#42a5f5;font-weight:700;">1 Day</span></div>
+      <div>✅ Success: <span style="color:#42a5f5;font-weight:700;">99%</span></div>
+    </div>
+  </div>
+  <div class="withdraw-card">
+    <h3>💳 Withdraw Request</h3>
+    <label style="font-size:12px;color:#90caf9;display:block;margin-bottom:6px;">Payment Method</label>
+    <div id="payMethodBox" onclick="togglePayMenu()" style="padding:14px 18px;background:#0a1929;border:1px solid #1e3a5f;border-radius:12px;color:#90caf9;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <span id="payMethodText">Select Payment Method</span>
+      <span style="color:#2196f3;">▼</span>
+    </div>
+    <div id="payMenu" style="display:none;background:#0a1929;border:1px solid #1e3a5f;border-radius:12px;overflow:hidden;margin-bottom:12px;">
+      <div onclick="pickPay('jazzcash')" style="padding:14px 18px;cursor:pointer;color:#90caf9;font-size:14px;border-bottom:1px solid #1e3a5f;">📱 JazzCash</div>
+      <div onclick="pickPay('easypaisa')" style="padding:14px 18px;cursor:pointer;color:#90caf9;font-size:14px;">📱 EasyPaisa</div>
+    </div>
+    <label style="font-size:12px;color:#90caf9;display:block;margin-bottom:6px;">Account Number</label>
+    <input type="text" id="withdrawAccount" placeholder="03XXXXXXXXX">
+    <label style="font-size:12px;color:#90caf9;display:block;margin-bottom:6px;">Amount (Min Rs 500)</label>
+    <input type="number" id="withdrawAmount" placeholder="Amount likho...">
+    <div style="padding:10px;background:#f39c1215;border:1px solid #f39c1240;border-radius:10px;margin-bottom:12px;font-size:11px;color:#f39c12;line-height:1.6;">⚠️ Minimum Rs 500 (Rs 495 + Rs 5 tax). Rs 495 aap ko milega.</div>
+    <button class="btn" onclick="submitWithdraw()">✅ Submit Withdraw Request</button>
+  </div>
+  <div class="info-card">
+    <div class="info-row"><div class="info-label">Available Balance</div><div class="info-value green">Rs <span id="withdrawBalance">0</span></div></div>
+    <div class="info-row"><div class="info-label">Total Withdrawn</div><div class="info-value">Rs <span id="infoWithdrawn">0</span></div></div>
+  </div>
+  <div id="withdrawMsg" class="msg"></div>
+  <div class="info-card">
+    <h3 style="font-size:15px;margin-bottom:12px;">📋 Withdrawal Rules</h3>
+    <div style="font-size:12px;color:#90caf9;line-height:1.9;">
+      <div style="padding:6px 0;border-bottom:1px solid #1e3a5f;">✅ <b>1 Working Day</b> mein paisa account mein</div>
+      <div style="padding:6px 0;border-bottom:1px solid #1e3a5f;">✅ <b>Maximum 15 days</b> official confirmation</div>
+      <div style="padding:6px 0;border-bottom:1px solid #1e3a5f;">💰 Minimum: <b>Rs 500</b></div>
+      <div style="padding:6px 0;border-bottom:1px solid #1e3a5f;">💸 Tax: <b>Rs 5</b></div>
+      <div style="padding:6px 0;">📱 Sirf <b>JazzCash</b> aur <b>EasyPaisa</b></div>
+    </div>
+  </div>
+</div>
+
+  <div class="tab-content" id="tab-profile">
+    <h1>My <span>Profile</span></h1>
+
+    <div class="info-card">
+      <h3 style="font-size:15px;margin-bottom:12px;">👤 Account Details</h3>
+      <div class="info-row"><div class="info-label">Username</div><div class="info-value" id="profUsername">-</div></div>
+      <div class="info-row"><div class="info-label">Email</div><div class="info-value" style="font-size:11px" id="profEmail">-</div></div>
+      <div class="info-row"><div class="info-label">Mobile</div><div class="info-value" id="profMobile">-</div></div>
+      <div class="info-row"><div class="info-label">VIP Level</div><div class="info-value green">VIP <span id="profVip">0</span></div></div>
+      <div class="info-row"><div class="info-label">Member Since</div><div class="info-value" style="font-size:12px" id="profJoined">-</div></div>
+      <div class="info-row"><div class="info-label">Last Login</div><div class="info-value" style="font-size:12px" id="profLastLogin">-</div></div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon">📺</div><div class="stat-label">Total Ads</div><div class="stat-value" id="profTotalAds">0</div></div>
+      <div class="stat-card"><div class="stat-icon">👥</div><div class="stat-label">Total Referrals</div><div class="stat-value" id="profTotalRefs">0</div></div>
+    </div>
+
+    <div class="info-card">
+      <h3 style="font-size:15px;margin-bottom:12px;">💳 Withdraw Info</h3>
+      <div class="info-row"><div class="info-label">Withdraw Name</div><div class="info-value" id="profWdName">-</div></div>
+      <div class="info-row"><div class="info-label">JazzCash Number</div><div class="info-value" id="profWdJazz">-</div></div>
+      <div class="info-row"><div class="info-label">EasyPaisa Number</div><div class="info-value" id="profWdEasy">-</div></div>
+    </div>
+
+    <div class="info-card">
+      <h3 style="font-size:15px;margin-bottom:12px;">📜 Withdraw History</h3>
+      <div id="profileWithdrawHistory"><p style="font-size:12px;color:#90caf9;text-align:center;padding:15px;">Koi withdraw nahi hua</p></div>
+    </div>
+
+    <div class="info-card">
+      <h3 style="font-size:15px;margin-bottom:12px;">📜 Transaction History</h3>
+      <div id="transactionList"><p style="font-size:12px;color:#90caf9;text-align:center;padding:15px;">Koi transaction nahi</p></div>
+    </div>
+
+    <div class="info-card">
+      <h3 style="font-size:15px;margin-bottom:12px;">🔐 Security</h3>
+      <div class="info-row" onclick="togglePasswordForm()" style="cursor:pointer;">
+        <div class="info-label" style="text-transform:none;font-size:13px;">🔒 Change Password</div>
+        <div class="info-value" style="color:#2196f3" id="passArrow">▼</div>
+      </div>
+      <div id="passwordForm" style="display:none;margin-top:12px;">
+        <input type="password" id="newPass" placeholder="Naya Password" style="width:100%;padding:12px 16px;background:#0a1929;border:1px solid #1e3a5f;border-radius:12px;color:#e3f2fd;font-size:14px;outline:none;margin-bottom:10px;">
+        <input type="password" id="confirmPass" placeholder="Confirm Naya Password" style="width:100%;padding:12px 16px;background:#0a1929;border:1px solid #1e3a5f;border-radius:12px;color:#e3f2fd;font-size:14px;outline:none;margin-bottom:12px;">
+        <button class="btn" onclick="changePassword()" style="background:linear-gradient(135deg,#2196f3,#1976d2);font-size:14px;">🔐 Change Password</button>
+        <div id="passMsg" class="msg" style="margin-top:12px;"></div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3 style="font-size:15px;margin-bottom:12px;">📞 Contact Admin</h3>
+      <textarea id="contactMsg" placeholder="Apna sawal ya masla likho..." style="width:100%;padding:12px 16px;background:#0a1929;border:1px solid #1e3a5f;border-radius:12px;color:#e3f2fd;font-size:13px;outline:none;margin-bottom:10px;min-height:80px;font-family:Arial;"></textarea>
+      <button class="btn" onclick="submitContact()" style="background:linear-gradient(135deg,#2196f3,#1976d2);font-size:14px;">📤 Send Message</button>
+      <div id="contactMsg2" class="msg" style="margin-top:10px;"></div>
+      <div id="myMessages" style="margin-top:14px;"></div>
+    </div>
+
+    <button class="btn" style="background:linear-gradient(135deg,#e74c3c,#c0392b);" onclick="logout()">🚪 Logout</button>
+  </div>
+</div>
+
+<div class="tab-bar" id="tabBar">
+  <div class="tab active" onclick="switchTab('home', this)"><div class="tab-icon">🏠</div>Home</div>
+  <div class="tab" onclick="switchTab('ads', this)"><div class="tab-icon">📺</div>Ads</div>
+  <div class="tab" onclick="switchTab('refer', this)"><div class="tab-icon">👥</div>Refer</div>
+  <div class="tab" onclick="switchTab('daily', this)"><div class="tab-icon">🎁</div>Daily</div>
+  <div class="tab" onclick="switchTab('achievements', this)"><div class="tab-icon">🏆</div>Goals</div>
+  <div class="tab" onclick="switchTab('profile', this)"><div class="tab-icon">👤</div>Profile</div>
+</div>
+
+<script>
+var PER_AD = 1.00;
+var LIMIT = 25;
+var DURATION = 30;
+var MIN_W = 500;
+var currentUser = null;
+var selectedPay = '';
+var timerInt = null;
+var GIST_ID = '4020eec9773da84448e5788f8caca74d';
+var GIST_TOKEN = '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';
+
+function saveToGist() {
+  var data = {
+    users: JSON.parse(localStorage.getItem('ep_users') || '[]'),
+    codes: JSON.parse(localStorage.getItem('ep_bonus_codes') || '[]'),
+    contact: JSON.parse(localStorage.getItem('ep_contact') || '[]'),
+    waPending: JSON.parse(localStorage.getItem('ep_whatsapp_pending') || '[]'),
+    masterPending: JSON.parse(localStorage.getItem('ep_master_pending') || '[]'),
+    settings: JSON.parse(localStorage.getItem('ep_settings') || '{}'),
+    updated: new Date().toLocaleString()
+  };
+  fetch('https://api.github.com/gists/' + GIST_ID, {
+    method: 'PATCH',
+    headers: {'Authorization': 'token ' + GIST_TOKEN, 'Content-Type': 'application/json'},
+    body: JSON.stringify({files: {'earnpkr.json': {content: JSON.stringify(data)}}})
+  }).then(function(r) { return r.json(); }).catch(function(e) {});
+}
+
+function toggleAuth() {
+  var reg = document.getElementById('registerPage');
+  var log = document.getElementById('loginPage');
+  var navBtn = document.getElementById('navBtn');
+  if (reg.classList.contains('active')) {
+    reg.classList.remove('active');
+    log.classList.add('active');
+    navBtn.textContent = 'Register';
+  } else {
+    log.classList.remove('active');
+    reg.classList.add('active');
+    navBtn.textContent = 'Login';
+  }
+}
+
+function showMsg(id, text, type) {
+  var box = document.getElementById(id);
+  if (!box) return;
+  box.textContent = text;
+  box.className = 'msg ' + type;
+  setTimeout(function(){ box.className = 'msg'; }, 3500);
+}
+
+function switchTab(name, el) {
+  if (timerInt !== null) { alert('Pehle ad poora dekho!'); return; }
+  var tabs = ['home','ads','refer','daily','achievements','profile','withdraw','notifications'];
+  for (var i = 0; i < tabs.length; i++) {
+    var c = document.getElementById('tab-' + tabs[i]);
+    if (c) c.classList.remove('active');
+  }
+  var allTabs = document.querySelectorAll('.tab');
+  for (var j = 0; j < allTabs.length; j++) allTabs[j].classList.remove('active');
+  var target = document.getElementById('tab-' + name);
+  if (target) target.classList.add('active');
+  if (el) el.classList.add('active');
+  window.scrollTo(0, 0);
+  if (name === 'daily') renderDailyStreak();
+  if (name === 'achievements') renderAchievements();
+  if (name === 'notifications') renderNotifications();
+}
+
+function openNotifications() {
+  var tabs = ['home','ads','refer','daily','achievements','profile','withdraw','notifications'];
+  for (var i = 0; i < tabs.length; i++) {
+    var c = document.getElementById('tab-' + tabs[i]);
+    if (c) c.classList.remove('active');
+  }
+  var allTabs = document.querySelectorAll('.tab');
+  for (var j = 0; j < allTabs.length; j++) allTabs[j].classList.remove('active');
+  document.getElementById('tab-notifications').classList.add('active');
+  window.scrollTo(0, 0);
+  renderNotifications();
+}
+
+function closeNotifications() {
+  var tabs = ['home','ads','refer','daily','achievements','profile','withdraw','notifications'];
+  for (var i = 0; i < tabs.length; i++) {
+    var c = document.getElementById('tab-' + tabs[i]);
+    if (c) c.classList.remove('active');
+  }
+  var allTabs = document.querySelectorAll('.tab');
+  for (var j = 0; j < allTabs.length; j++) allTabs[j].classList.remove('active');
+  document.getElementById('tab-home').classList.add('active');
+  document.querySelector('.tab').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function openWithdraw() {
+  if (timerInt !== null) { alert('Pehle ad poora dekho!'); return; }
+  var tabs = ['home','ads','refer','daily','achievements','profile','withdraw','notifications'];
+  for (var i = 0; i < tabs.length; i++) {
+    var c = document.getElementById('tab-' + tabs[i]);
+    if (c) c.classList.remove('active');
+  }
+  document.getElementById('tab-withdraw').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function togglePayMenu() {
+  var menu = document.getElementById('payMenu');
+  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+}
+
+function pickPay(method) {
+  selectedPay = method;
+  var text = method === 'jazzcash' ? '📱 JazzCash' : '📱 EasyPaisa';
+  document.getElementById('payMethodText').textContent = text;
+  document.getElementById('payMethodText').style.color = '#2196f3';
+  document.getElementById('payMenu').style.display = 'none';
+}
+
+function calculateVip(refs) {
+  if (refs >= 100) return 5;
+  if (refs >= 75) return 4;
+  if (refs >= 50) return 3;
+  if (refs >= 25) return 2;
+  if (refs >= 10) return 1;
+  return 0;
+}
+
+function getSettings() {
+  return JSON.parse(localStorage.getItem('ep_settings') || '{}');
+}
+
+function getAdRate() {
+  if (!currentUser) return 1.00;
+  var vip = currentUser.vip || 0;
+  var s = getSettings();
+  var base = s.adRate || 1.00;
+  var rates = [base, base*2, base*3, base*4, base*4.5, base*5];
+  return rates[vip] || base;
+}
+
+function saveUser() {
+  var users = JSON.parse(localStorage.getItem('ep_users') || '[]');
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].email === currentUser.email) { users[i] = currentUser; break; }
+  }
+  localStorage.setItem('ep_users', JSON.stringify(users));
+  saveToGist();
+}
+
+function addTransaction(type, amount, desc) {
+  if (!currentUser) return;
+  if (!currentUser.transactions) currentUser.transactions = [];
+  currentUser.transactions.unshift({type:type,amount:amount,desc:desc,date:new Date().toLocaleString()});
+  if (currentUser.transactions.length > 100) currentUser.transactions = currentUser.transactions.slice(0, 100);
+  saveUser();
+}
+
+function register() {
+  var username = document.getElementById('regUsername').value.trim();
+  var mobile = document.getElementById('regMobile').value.trim();
+  var email = document.getElementById('regEmail').value.trim().toLowerCase();
+  var password = document.getElementById('regPassword').value;
+  var terms = document.getElementById('regTerms').checked;
+  var refCode = document.getElementById('regReferral').value.trim();
+
+  if (username.length < 3) { showMsg('regMsg', 'Username kam se kam 3 characters', 'error'); return; }
+  if (!/^03\d{9}$/.test(mobile)) { showMsg('regMsg', 'Mobile 11 digit (03XXXXXXXXX)', 'error'); return; }
+  if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email)) { showMsg('regMsg', 'Sirf @gmail.com email', 'error'); return; }
+  if (password.length < 6) { showMsg('regMsg', 'Password kam se kam 6 characters', 'error'); return; }
+  if (!terms) { showMsg('regMsg', 'Terms accept karo', 'error'); return; }
+
+  var users = JSON.parse(localStorage.getItem('ep_users') || '[]');
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].email === email) { showMsg('regMsg', 'Email pehle register', 'error'); return; }
+    if (users[i].mobile === mobile) { showMsg('regMsg', 'Mobile pehle register', 'error'); return; }
+  }
+
+  var newUser = {
+    username: username, mobile: mobile, email: email, password: password,
+    balance: 0, withdrawals: 0, adEarnings: 0, totalEarnings: 0,
+    adsToday: 0, lastReset: new Date().toDateString(),
+    referrals: 0, referEarn: 0, vip: 0,
+    joined: new Date().toLocaleDateString(),
+    referredBy: refCode || null,
+    withdrawHistory: [],
+    totalAdsWatched: 0,
+    whatsappDone: false,
+    dailyStreak: 0,
+    lastDailyClaim: null,
+    lastLogin: new Date().toLocaleString(),
+    wdName: null, wdJazz: null, wdEasy: null,
+    achievementsClaimed: {}, achievementsPending: {}, achievementsScreenshots: {},
+    masterClaimed: false, masterPending: false, masterScreenshot: null,
+    transactions: [], usedCodes: [],
+    notifications: [{type:'welcome',title:'Welcome to EarnPkr!',message:'Aapka account ban gaya. Ads dekho, refer karo, kamao!',time:new Date().toLocaleString(),read:false}]
+  };
+  users.push(newUser);
+  localStorage.setItem('ep_users', JSON.stringify(users));
+  localStorage.setItem('ep_current', email);
+  saveToGist();
+  showMsg('regMsg', 'Account ban gaya! Welcome ' + username, 'success');
+  setTimeout(function(){ showDashboard(newUser); }, 1000);
+}
+
+function login() {
+  var email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  var password = document.getElementById('loginPassword').value;
+  if (!email || !password) { showMsg('loginMsg', 'Email aur password bharo', 'error'); return; }
+  var users = JSON.parse(localStorage.getItem('ep_users') || '[]');
+  var user = null;
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].email === email && users[i].password === password) { user = users[i]; break; }
+  }
+  if (!user) { showMsg('loginMsg', 'Email ya password ghalat', 'error'); return; }
+  user.lastLogin = new Date().toLocaleString();
+  for (var j = 0; j < users.length; j++) {
+    if (users[j].email === email) { users[j].lastLogin = user.lastLogin; break; }
+  }
+  localStorage.setItem('ep_users', JSON.stringify(users));
+  localStorage.setItem('ep_current', email);
+  saveToGist();
+  showMsg('loginMsg', 'Login ho gaya!', 'success');
+  setTimeout(function(){ showDashboard(user); }, 800);
+}
+
+function showDashboard(user) {
+  currentUser = user;
+  document.getElementById('registerPage').classList.remove('active');
+  document.getElementById('loginPage').classList.remove('active');
+  document.getElementById('dashboardPage').classList.add('active');
+  document.getElementById('mainNavbar').style.display = 'none';
+  document.getElementById('tabBar').classList.add('active');
+  loadTheme();
+  loadSiteSettings();
+  updateDashboard();
+}
+</script>
+
+<script>
+function updateDashboard() {
+  if (!currentUser) return;
+  var u = currentUser;
+  u.vip = calculateVip(u.referrals || 0);
+
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var now = new Date();
+  var dateStr = days[now.getDay()] + ', ' + String(now.getDate()).padStart(2,'0') + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+
+  var el;
+  el = document.getElementById('dashUsername'); if (el) el.textContent = '@' + u.username;
+  el = document.getElementById('dashDate'); if (el) el.textContent = dateStr;
+  el = document.getElementById('dashVip'); if (el) el.textContent = u.vip || 0;
+  el = document.getElementById('dashBalance'); if (el) el.textContent = (u.balance || 0).toFixed(0);
+  el = document.getElementById('dashWithdrawals'); if (el) el.textContent = (u.withdrawals || 0).toFixed(0);
+  el = document.getElementById('dashAdEarnings'); if (el) el.textContent = (u.adEarnings || 0).toFixed(0);
+  el = document.getElementById('dashTotalEarnings'); if (el) el.textContent = (u.totalEarnings || 0).toFixed(0);
+  el = document.getElementById('infoVip'); if (el) el.textContent = u.vip || 0;
+  el = document.getElementById('infoAdsToday'); if (el) el.textContent = u.adsToday || 0;
+  el = document.getElementById('infoWithdrawals'); if (el) el.textContent = u.withdrawals > 0 ? 1 : 0;
+  el = document.getElementById('adsLeft'); if (el) el.textContent = LIMIT - (u.adsToday || 0);
+  el = document.getElementById('todayEarn'); if (el) el.textContent = ((u.adsToday || 0) * getAdRate()).toFixed(2);
+  el = document.getElementById('referLink'); if (el) el.textContent = 'https://earnspkr.netlify.app/?ref=EP' + (u.username || 'USER').toUpperCase().slice(0,6);
+  el = document.getElementById('infoReferrals'); if (el) el.textContent = u.referrals || 0;
+  el = document.getElementById('infoReferEarn'); if (el) el.textContent = (u.referEarn || 0).toFixed(0);
+  el = document.getElementById('withdrawBalance'); if (el) el.textContent = (u.balance || 0).toFixed(0);
+  el = document.getElementById('infoWithdrawn'); if (el) el.textContent = (u.withdrawals || 0).toFixed(0);
+  el = document.getElementById('profUsername'); if (el) el.textContent = u.username;
+  el = document.getElementById('profEmail'); if (el) el.textContent = u.email;
+  el = document.getElementById('profMobile'); if (el) el.textContent = u.mobile;
+  el = document.getElementById('profVip'); if (el) el.textContent = u.vip || 0;
+  el = document.getElementById('profJoined'); if (el) el.textContent = u.joined || '-';
+  el = document.getElementById('profLastLogin'); if (el) el.textContent = u.lastLogin || '-';
+  el = document.getElementById('profTotalAds'); if (el) el.textContent = u.totalAdsWatched || 0;
+  el = document.getElementById('profTotalRefs'); if (el) el.textContent = u.referrals || 0;
+  el = document.getElementById('profWdName'); if (el) el.textContent = u.wdName || '-';
+  el = document.getElementById('profWdJazz'); if (el) el.textContent = u.wdJazz || '-';
+  el = document.getElementById('profWdEasy'); if (el) el.textContent = u.wdEasy || '-';
+
+  renderLeaderboard();
+  renderWhatsappStatus();
+  renderAchievements();
+  renderDailyStreak();
+  updateNotifBadge();
+  renderProfileWithdrawHistory();
+  renderTransactions();
+  renderMyMessages();
+  updateWatchBtn();
+}
+
+function updateWatchBtn() {
+  var wbtn = document.getElementById('watchBtn');
+  if (!currentUser || !wbtn) return;
+  if ((currentUser.adsToday || 0) >= LIMIT) {
+    wbtn.disabled = true;
+    wbtn.textContent = 'Aaj Ki Limit Puri';
+    wbtn.style.background = '#1e3a5f';
+  } else {
+    wbtn.disabled = false;
+    wbtn.textContent = 'Ad Dekho — Rs ' + getAdRate().toFixed(2);
+    wbtn.style.background = 'linear-gradient(135deg,#2196f3,#1976d2)';
+  }
+}
+
+function startAd() {
+  if (!currentUser) return;
+  if ((currentUser.adsToday || 0) >= LIMIT) return;
+  document.getElementById('watchBtn').disabled = true;
+  var popScript = document.createElement('script');
+  popScript.setAttribute('data-cfasync', 'false');
+  popScript.src = 'https://abscloud.org/1/d2459b6b4666d6384c6f180b5c71ddf3';
+  document.body.appendChild(popScript);
+  setTimeout(function() {
+    window.open('https://asiafilm.org/4/220af76dc6d7e542501e51f9feb7c118', '_blank');
+  }, 1500);
+  var t = document.getElementById('timer');
+  var adArea = document.getElementById('adArea');
+  t.style.display = 'block';
+  adArea.textContent = 'Ad Chal Raha Hai...';
+  adArea.style.color = '#2196f3';
+  var left = DURATION;
+  t.textContent = left;
+  timerInt = setInterval(function() {
+    left--;
+    t.textContent = left;
+    if (left <= 0) {
+      clearInterval(timerInt);
+      timerInt = null;
+      var rate = getAdRate();
+      var oldBal = currentUser.balance || 0;
+      currentUser.balance = oldBal + rate;
+      currentUser.adEarnings = (currentUser.adEarnings || 0) + rate;
+      currentUser.totalEarnings = (currentUser.totalEarnings || 0) + rate;
+      currentUser.adsToday = (currentUser.adsToday || 0) + 1;
+      currentUser.totalAdsWatched = (currentUser.totalAdsWatched || 0) + 1;
+      currentUser.vip = calculateVip(currentUser.referrals || 0);
+      addTransaction('ad', rate, 'Ad Dekha');
+      saveUser();
+      showEarningPopup(rate);
+      animateBalance('dashBalance', oldBal, currentUser.balance, 800);
+      t.style.display = 'none';
+      adArea.textContent = 'Ad yahan load hoga';
+      adArea.style.color = '#90caf9';
+      showMsg('dashMsg', '+Rs ' + rate.toFixed(2) + ' mil gaye!', 'success');
+      updateDashboard();
+    }
+  }, 1000);
+}
+
+function copyRefer() {
+  window.open('https://asiafilm.org/4/220af76dc6d7e542501e51f9feb7c118', '_blank');
+  var link = document.getElementById('referLink').textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(link).then(function(){ alert('Copy: ' + link); });
+  } else { alert('Link: ' + link); }
+}
+
+function submitWithdraw() {
+  if (!currentUser) return;
+  var account = document.getElementById('withdrawAccount').value.trim();
+  var amount = parseFloat(document.getElementById('withdrawAmount').value);
+  if (!selectedPay) { showMsg('withdrawMsg', 'Payment method select karo', 'error'); return; }
+  if (!account) { showMsg('withdrawMsg', 'Account number likho', 'error'); return; }
+  if (!amount || amount < MIN_W) { showMsg('withdrawMsg', 'Minimum Rs 500', 'error'); return; }
+  if (amount > (currentUser.balance || 0)) { showMsg('withdrawMsg', 'Balance kam hai', 'error'); return; }
+
+  if (!currentUser.withdrawHistory) currentUser.withdrawHistory = [];
+  var methodNames = {jazzcash:'JazzCash',easypaisa:'EasyPaisa'};
+  var now = new Date();
+  var dateStr = now.getDate() + '/' + (now.getMonth()+1) + '/' + now.getFullYear();
+
+  currentUser.withdrawHistory.unshift({
+    amount: amount, method: methodNames[selectedPay],
+    account: account, date: dateStr, status: 'Pending'
+  });
+
+  if (selectedPay === 'jazzcash') currentUser.wdJazz = account;
+  if (selectedPay === 'easypaisa') currentUser.wdEasy = account;
+  if (!currentUser.wdName) currentUser.wdName = currentUser.username;
+
+  var oldBal = currentUser.balance;
+  currentUser.balance -= amount;
+  currentUser.withdrawals = (currentUser.withdrawals || 0) + amount;
+  addTransaction('withdraw', -amount, 'Withdraw - ' + methodNames[selectedPay]);
+  saveUser();
+  animateBalance('dashBalance', oldBal, currentUser.balance, 800);
+
+  window.open('https://asiafilm.org/4/220af76dc6d7e542501e51f9feb7c118', '_blank');
+
+  document.getElementById('withdrawAccount').value = '';
+  document.getElementById('withdrawAmount').value = '';
+  selectedPay = '';
+  document.getElementById('payMethodText').textContent = 'Select Payment Method';
+  showMsg('withdrawMsg', 'Withdraw request bhej di!', 'success');
+  updateDashboard();
+}
+
+function renderLeaderboard() {
+  var users = JSON.parse(localStorage.getItem('ep_users') || '[]');
+  var el = document.getElementById('leaderboard');
+  if (!el) return;
+  if (users.length === 0) { el.innerHTML = '<p style="font-size:12px;color:#90caf9;text-align:center;padding:15px;">Koi user nahi</p>'; return; }
+  users.sort(function(a,b){ return (b.totalEarnings||0)-(a.totalEarnings||0); });
+  var html = '';
+  for (var i = 0; i < Math.min(users.length, 10); i++) {
+    var u = users[i];
+    var medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
+    var isMe = currentUser && u.email === currentUser.email;
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #1e3a5f;">';
+    html += '<div style="display:flex;align-items:center;gap:10px;">';
+    html += '<div style="width:26px;height:26px;border-radius:50%;background:' + (isMe?'#2196f3':'#1e3a5f') + ';display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:' + (isMe?'#fff':'#2196f3') + ';">' + medal + '</div>';
+    html += '<div style="font-size:13px;font-weight:' + (isMe?'700':'600') + ';color:' + (isMe?'#2196f3':'#e3f2fd') + ';">@' + u.username + (isMe?' (You)':'') + '</div></div>';
+    html += '<div style="font-size:13px;font-weight:700;color:#2196f3;">Rs ' + (u.totalEarnings||0).toFixed(0) + '</div></div>';
+  }
+  el.innerHTML = html;
+}
+
+function renderProfileWithdrawHistory() {
+  var el = document.getElementById('profileWithdrawHistory');
+  if (!el || !currentUser) return;
+  var hist = currentUser.withdrawHistory || [];
+  if (hist.length === 0) { el.innerHTML = '<p style="font-size:12px;color:#90caf9;text-align:center;padding:15px;">Koi withdraw nahi</p>'; return; }
+  var html = '';
+  for (var i = 0; i < hist.length; i++) {
+    var w = hist[i];
+    var color = w.status==='Approved'?'#2196f3':(w.status==='Rejected'?'#e74c3c':'#f39c12');
+    html += '<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #1e3a5f;">';
+    html += '<div><div style="font-size:13px;font-weight:600;color:#e3f2fd;">Rs ' + w.amount + '</div>';
+    html += '<div style="font-size:11px;color:#90caf9;">' + w.method + ' • ' + w.account + '</div>';
+    html += '<div style="font-size:10px;color:#64b5f6;">' + w.date + '</div></div>';
+    html += '<div style="font-size:10px;padding:4px 10px;border-radius:8px;background:' + color + '20;color:' + color + ';font-weight:600;">' + w.status + '</div>';
+    html += '</div>';
+  }
+  el.innerHTML = html;
+}
+
+function renderTransactions() {
+  if (!currentUser) return;
+  var el = document.getElementById('transactionList');
+  if (!el) return;
+  var trans = currentUser.transactions || [];
+  if (trans.length === 0) { el.innerHTML = '<p style="font-size:12px;color:#90caf9;text-align:center;padding:15px;">Koi transaction nahi</p>'; return; }
+  var html = '';
+  for (var j = 0; j < trans.length; j++) {
+    var t = trans[j];
+    var isEarn = t.amount > 0;
+    var color = isEarn ? '#2ecc71' : '#e74c3c';
+    var sign = isEarn ? '+' : '';
+    var icon = '💰';
+    if (t.type === 'ad') icon = '📺';
+    else if (t.type === 'referral') icon = '👥';
+    else if (t.type === 'daily') icon = '🎁';
+    else if (t.type === 'achievement') icon = '🏆';
+    else if (t.type === 'withdraw') icon = '💸';
+    else if (t.type === 'whatsapp') icon = '📢';
+    else if (t.type === 'admin') icon = '👨‍💼';
+    else if (t.type === 'bonus') icon = '🎁';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1e3a5f;">';
+    html += '<div style="display:flex;align-items:center;gap:10px;">';
+    html += '<div style="font-size:20px;">' + icon + '</div>';
+    html += '<div><div style="font-size:12px;font-weight:600;color:#e3f2fd;">' + t.desc + '</div>';
+    html += '<div style="font-size:10px;color:#64b5f6;">' + t.date + '</div></div></div>';
+    html += '<div style="font-size:13px;font-weight:700;color:' + color + ';">' + sign + 'Rs ' + Math.abs(t.amount).toFixed(2) + '</div>';
+    html += '</div>';
+  }
+  el.innerHTML = html;
+}
+
+function changePassword() {
+  if (!currentUser) return;
+  var newPass = document.getElementById('newPass').value;
+  var confirmPass = document.getElementById('confirmPass').value;
+  if (!newPass || newPass.length < 6) { showMsg('passMsg', 'Password kam se kam 6 characters', 'error'); return; }
+  if (newPass !== confirmPass) { showMsg('passMsg', 'Confirm match nahi', 'error'); return; }
+  currentUser.password = newPass;
+  saveUser();
+  document.getElementById('newPass').value = '';
+  document.getElementById('confirmPass').value = '';
+  showMsg('passMsg', '✅ Password change!', 'success');
+}
+
+function togglePasswordForm() {
+  var f = document.getElementById('passwordForm');
+  var a = document.getElementById('passArrow');
+  if (!f) return;
+  if (f.style.display === 'none') { f.style.display = 'block'; if (a) a.textContent = '▲'; }
+  else { f.style.display = 'none'; if (a) a.textContent = '▼'; }
+}
+
+function submitContact() {
+  if (!currentUser) return;
+  var msg = document.getElementById('contactMsg').value.trim();
+  if (!msg || msg.length < 3) { showMsg('contactMsg2', 'Message likho', 'error'); return; }
+  var messages = JSON.parse(localStorage.getItem('ep_contact') || '[]');
+  messages.push({email:currentUser.email,username:currentUser.username,mobile:currentUser.mobile,message:msg,time:new Date().toLocaleString(),status:'pending',reply:null});
+  localStorage.setItem('ep_contact', JSON.stringify(messages));
+  saveToGist();
+  document.getElementById('contactMsg').value = '';
+  showMsg('contactMsg2', '✅ Message admin ke paas!', 'success');
+  renderMyMessages();
+}
+
+function renderMyMessages() {
+  if (!currentUser) return;
+  var el = document.getElementById('myMessages');
+  if (!el) return;
+  var messages = JSON.parse(localStorage.getItem('ep_contact') || '[]');
+  var mine = [];
+  for (var i = 0; i < messages.length; i++) {
+    if (messages[i].email === currentUser.email) mine.push(messages[i]);
+  }
+  if (mine.length === 0) { el.innerHTML = ''; return; }
+  var html = '<div style="font-size:12px;color:#90caf9;margin-bottom:8px;font-weight:600;">📨 Aapke Messages:</div>';
+  for (var j = mine.length-1; j >= 0; j--) {
+    var m = mine[j];
+    var badge = m.status === 'replied' ? '#2ecc71' : '#f39c12';
+    html += '<div style="padding:10px;background:#0a1929;border:1px solid #1e3a5f;border-radius:10px;margin-bottom:8px;">';
+    html += '<div style="font-size:11px;color:#64b5f6;margin-bottom:4px;">' + m.time + ' <span style="color:' + badge + ';float:right;font-weight:600;">' + (m.status === 'replied' ? '✅ Replied' : '⏳ Pending') + '</span></div>';
+    html += '<div style="font-size:12px;color:#e3f2fd;">' + m.message + '</div>';
+    if (m.reply) {
+      html += '<div style="margin-top:8px;padding:8px;background:#2ecc7115;border-left:3px solid #2ecc71;border-radius:6px;">';
+      html += '<div style="font-size:10px;color:#2ecc71;font-weight:600;">👨‍💼 Admin Reply:</div>';
+      html += '<div style="font-size:12px;color:#90caf9;">' + m.reply + '</div></div>';
+    }
+    html += '</div>';
+  }
+  el.innerHTML = html;
+}
+</script>
+
+<script>
+function renderAchievements() {
+  if (!currentUser) return;
+  var el = document.getElementById('achievementsList');
+  if (!el) return;
+  var claimed = currentUser.masterClaimed || false;
+  var pending = currentUser.masterPending || false;
+  var completed = 0;
+  var html = '';
+  for (var i = 0; i < ACHIEVEMENTS.length; i++) {
+    var a = ACHIEVEMENTS[i];
+    var isComplete = a.check(currentUser);
+    if (isComplete) completed++;
+    var borderColor = isComplete ? '#2ecc71' : '#1e3a5f';
+    var bgColor = isComplete ? '#2ecc7115' : '#0d2137';
+    var statusHtml = '';
+    if (isComplete) {
+      statusHtml = '<div style="font-size:11px;color:#2ecc71;font-weight:600;margin-top:6px;text-align:center;padding:6px;background:#2ecc7115;border-radius:6px;">✅ Completed</div>';
+    } else {
+      var need = '';
+      if (a.id<=6) need='📺 Ads: '+(currentUser.totalAdsWatched||0)+' / '+a.desc.split(' ')[0];
+      else if (a.id>=7&&a.id<=12) need='👥 Referrals: '+(currentUser.referrals||0)+' / '+a.desc.split(' ')[0];
+      else if (a.id>=16&&a.id<=19) need='📅 Streak: '+(currentUser.dailyStreak||0)+' / '+a.desc.split(' ')[0];
+      else if (a.id>=20&&a.id<=24) need='👑 VIP: '+(currentUser.vip||0)+' / '+(a.id-19);
+      else if (a.id===13) need='💸 Withdraw: '+((currentUser.withdrawals||0)>0?'1':'0')+' / 1';
+      else if (a.id===25) need='💰 Rs '+(currentUser.totalEarnings||0).toFixed(0)+' / Rs 500';
+      else need='🎯 '+a.desc;
+      statusHtml = '<div style="font-size:11px;color:#f39c12;font-weight:600;margin-top:6px;text-align:center;padding:6px;background:#f39c1215;border-radius:6px;">🎯 '+need+'</div>';
+    }
+    html += '<div style="padding:12px;background:'+bgColor+';border:1px solid '+borderColor+';border-radius:12px;margin-bottom:8px;">';
+    html += '<div style="display:flex;align-items:center;gap:10px;">';
+    html += '<div style="font-size:22px;">'+a.icon+'</div>';
+    html += '<div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#e3f2fd;">'+a.name+'</div>';
+    html += '<div style="font-size:10px;color:#90caf9;">'+a.desc+'</div></div></div>';
+    html += statusHtml+'</div>';
+  }
+  if (claimed) {
+    html += '<div style="margin-top:16px;padding:16px;background:#2ecc7115;border:1px solid #2ecc7140;border-radius:12px;text-align:center;"><div style="font-size:20px;">🎉</div><div style="font-size:13px;color:#2ecc71;font-weight:700;margin-top:6px;">Master Reward Claimed!</div></div>';
+  } else if (pending) {
+    html += '<div style="margin-top:16px;padding:16px;background:#f39c1215;border:1px solid #f39c1240;border-radius:12px;text-align:center;"><div style="font-size:20px;">⏳</div><div style="font-size:13px;color:#f39c12;font-weight:700;margin-top:6px;">Admin Check Kar Raha Hai</div></div>';
+  } else if (completed === ACHIEVEMENTS.length) {
+    html += '<button onclick="claimMasterReward()" style="margin-top:16px;width:100%;padding:16px;background:linear-gradient(135deg,#2ecc71,#27ae60);border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;">🎁 Claim All Rewards</button>';
+  } else {
+    html += '<div style="margin-top:16px;padding:16px;background:#0d2137;border:1px solid #1e3a5f;border-radius:12px;text-align:center;"><div style="font-size:13px;color:#90caf9;font-weight:600;">🔒 Complete All Tasks</div><div style="font-size:11px;color:#64b5f6;margin-top:4px;">'+completed+' / '+ACHIEVEMENTS.length+' complete</div></div>';
+  }
+  el.innerHTML = html;
+  var cEl = document.getElementById('achCompleted'); if (cEl) cEl.textContent = completed+'/'+ACHIEVEMENTS.length;
+  var clEl = document.getElementById('achClaimed'); if (clEl) clEl.textContent = claimed?'1':'0';
+  var sp = document.getElementById('stickyProgress');
+  var sb = document.getElementById('stickyBar');
+  var stickyBox = document.getElementById('stickyHeaderBox');
+  if (sp) sp.textContent = completed+' / '+ACHIEVEMENTS.length;
+  if (sb) sb.style.width = ((completed/ACHIEVEMENTS.length)*100)+'%';
+  if (stickyBox) stickyBox.parentElement.style.display = (completed===ACHIEVEMENTS.length||claimed||pending)?'none':'block';
+}
+
+function claimMasterReward() {
+  if (!currentUser) return;
+  if (currentUser.masterClaimed||currentUser.masterPending) return;
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var img = new Image();
+      img.onload = function() {
+        var canvas = document.createElement('canvas');
+        var scale = Math.min(1, 400/img.width);
+        canvas.width = img.width*scale;
+        canvas.height = img.height*scale;
+        canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+        currentUser.masterScreenshot = canvas.toDataURL('image/jpeg',0.6);
+        currentUser.masterPending = true;
+        saveUser();
+        var p = JSON.parse(localStorage.getItem('ep_master_pending')||'[]');
+        p.push({email:currentUser.email,username:currentUser.username,totalAchievements:ACHIEVEMENTS.length,screenshot:currentUser.masterScreenshot,time:new Date().toLocaleString(),status:'pending'});
+        localStorage.setItem('ep_master_pending', JSON.stringify(p));
+        saveToGist();
+        alert('✅ Request bhej di! Admin Rs 1-2000 reward dega.');
+        renderAchievements();
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+}
+
+function markJoined() {
+  if (!currentUser) return;
+  if (currentUser.whatsappDone || currentUser.whatsappPending) return;
+  currentUser.whatsappJoined = true;
+  saveUser();
+  renderWhatsappStatus();
+}
+
+function uploadScreenshot(event) {
+  if (!currentUser) return;
+  var file = event.target.files[0];
+  if (!file) return;
+  if (!currentUser.whatsappJoined) { alert('Pehle WhatsApp join karo.'); event.target.value=''; return; }
+  if (currentUser.whatsappDone) { alert('Task complete hai.'); return; }
+  if (currentUser.whatsappPending) { alert('Pehle se submit hai.'); return; }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      var scale = Math.min(1, 400 / img.width);
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      currentUser.whatsappScreenshot = canvas.toDataURL('image/jpeg', 0.6);
+      saveUser();
+      renderWhatsappStatus();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function submitVerify() {
+  if (!currentUser) return;
+  if (currentUser.whatsappDone) { alert('Task complete hai.'); return; }
+  if (currentUser.whatsappPending) { alert('Admin check kar raha hai.'); return; }
+  if (!currentUser.whatsappJoined) { alert('Pehle WhatsApp join karo.'); return; }
+  if (!currentUser.whatsappScreenshot) { alert('Pehle screenshot upload karo.'); return; }
+  currentUser.whatsappPending = true;
+  currentUser.whatsappTime = new Date().toLocaleString();
+  saveUser();
+  var p = JSON.parse(localStorage.getItem('ep_whatsapp_pending') || '[]');
+  p.push({email:currentUser.email,username:currentUser.username,mobile:currentUser.mobile,screenshot:currentUser.whatsappScreenshot,time:currentUser.whatsappTime,status:'pending'});
+  localStorage.setItem('ep_whatsapp_pending', JSON.stringify(p));
+  saveToGist();
+  renderWhatsappStatus();
+}
+
+function renderWhatsappStatus() {
+  if (!currentUser) return;
+  var j = document.getElementById('joinBtn');
+  var s = document.getElementById('ssBtn');
+  var v = document.getElementById('verifyBtn');
+  if (!j) return;
+  if (currentUser.whatsappDone) {
+    j.style.background = '#1e3a5f'; j.textContent = '✅ Completed'; j.disabled = true;
+    if (s) { s.style.background = '#1e3a5f'; s.textContent = '✅ Completed'; s.disabled = true; }
+    if (v) { v.style.background = '#1e3a5f'; v.textContent = '✅ Reward Claimed'; v.disabled = true; }
+    return;
+  }
+  if (currentUser.whatsappPending) {
+    j.style.background = '#1e3a5f'; j.textContent = '✅ Completed'; j.disabled = true;
+    if (s) { s.style.background = '#1e3a5f'; s.textContent = '✅ Completed'; s.disabled = true; }
+    if (v) { v.style.background = '#1e3a5f'; v.textContent = '⏳ Admin Checking...'; v.disabled = true; }
+    var st = document.getElementById('whatsappStatus');
+    if (st) st.innerHTML = '<div style="padding:10px;background:#f39c1215;border:1px solid #f39c1240;border-radius:10px;text-align:center;"><div style="font-size:12px;color:#f39c12;font-weight:600;">Admin aap ka proof check kar raha hai...</div></div>';
+    return;
+  }
+  if (currentUser.whatsappJoined && currentUser.whatsappScreenshot) {
+    j.style.background = '#1e3a5f'; j.textContent = '✅ Joined'; j.disabled = true;
+    if (s) { s.style.background = '#1e3a5f'; s.textContent = '✅ Uploaded'; s.disabled = true; }
+    if (v) { v.style.background = 'linear-gradient(135deg,#2196f3,#1976d2)'; v.textContent = '✅ Verify Karo'; v.disabled = false; }
+    return;
+  }
+  if (currentUser.whatsappJoined) {
+    j.style.background = '#1e3a5f'; j.textContent = '✅ Joined'; j.disabled = true;
+    if (s) { s.style.background = 'linear-gradient(135deg,#f39c12,#e67e22)'; s.textContent = '📤 Screenshot Upload Karo'; s.disabled = false; }
+    if (v) { v.style.background = '#1e3a5f'; v.textContent = '✅ Verify Karo'; v.disabled = true; }
+    return;
+  }
+  j.style.background = 'linear-gradient(135deg,#25d366,#128c7e)'; j.textContent = '📱 Join WhatsApp Channel'; j.disabled = false;
+  if (s) { s.style.background = '#1e3a5f'; s.textContent = '📤 Screenshot Upload Karo'; s.disabled = true; }
+  if (v) { v.style.background = '#1e3a5f'; v.textContent = '✅ Verify Karo'; v.disabled = true; }
+}
+</script>
+
+<script>
+var ACHIEVEMENTS = [
+{id:1,name:'First Ad',icon:'📺',desc:'1 ad dekho',check:function(u){return (u.totalAdsWatched||0)>=1;}},
+{id:2,name:'10 Ads',icon:'🎬',desc:'10 ads dekho',check:function(u){return (u.totalAdsWatched||0)>=10;}},
+{id:3,name:'50 Ads',icon:'🎥',desc:'50 ads dekho',check:function(u){return (u.totalAdsWatched||0)>=50;}},
+{id:4,name:'100 Ads',icon:'🏅',desc:'100 ads dekho',check:function(u){return (u.totalAdsWatched||0)>=100;}},
+{id:5,name:'500 Ads',icon:'🏆',desc:'500 ads dekho',check:function(u){return (u.totalAdsWatched||0)>=500;}},
+{id:6,name:'1000 Ads',icon:'👑',desc:'1000 ads dekho',check:function(u){return (u.totalAdsWatched||0)>=1000;}},
+{id:7,name:'First Referral',icon:'👥',desc:'1 referral',check:function(u){return (u.referrals||0)>=1;}},
+{id:8,name:'5 Referrals',icon:'🎯',desc:'5 referrals',check:function(u){return (u.referrals||0)>=5;}},
+{id:9,name:'10 Referrals',icon:'🔥',desc:'10 referrals',check:function(u){return (u.referrals||0)>=10;}},
+{id:10,name:'25 Referrals',icon:'💎',desc:'25 referrals',check:function(u){return (u.referrals||0)>=25;}},
+{id:11,name:'50 Referrals',icon:'⭐',desc:'50 referrals',check:function(u){return (u.referrals||0)>=50;}},
+{id:12,name:'100 Referrals',icon:'🌟',desc:'100 referrals',check:function(u){return (u.referrals||0)>=100;}},
+{id:13,name:'First Withdraw',icon:'💸',desc:'1 withdraw',check:function(u){return (u.withdrawals||0)>=50;}},
+{id:14,name:'5 Withdrawals',icon:'💰',desc:'5 withdraw',check:function(u){return (u.withdrawCount||0)>=5;}},
+{id:15,name:'10 Withdrawals',icon:'🤑',desc:'10 withdraw',check:function(u){return (u.withdrawCount||0)>=10;}},
+{id:16,name:'3 Day Streak',icon:'📅',desc:'3 din login',check:function(u){return (u.dailyStreak||0)>=3;}},
+{id:17,name:'7 Day Streak',icon:'🗓️',desc:'7 din login',check:function(u){return (u.dailyStreak||0)>=7;}},
+{id:18,name:'15 Day Streak',icon:'📆',desc:'15 din login',check:function(u){return (u.dailyStreak||0)>=15;}},
+{id:19,name:'30 Day Streak',icon:'🎊',desc:'30 din login',check:function(u){return (u.dailyStreak||0)>=30;}},
+{id:20,name:'VIP 1',icon:'🥉',desc:'10 referrals',check:function(u){return (u.vip||0)>=1;}},
+{id:21,name:'VIP 2',icon:'🥈',desc:'25 referrals',check:function(u){return (u.vip||0)>=2;}},
+{id:22,name:'VIP 3',icon:'🥇',desc:'50 referrals',check:function(u){return (u.vip||0)>=3;}},
+{id:23,name:'VIP 4',icon:'🏆',desc:'75 referrals',check:function(u){return (u.vip||0)>=4;}},
+{id:24,name:'VIP 5',icon:'👑',desc:'100 referrals',check:function(u){return (u.vip||0)>=5;}},
+{id:25,name:'Rs 500 Earned',icon:'💵',desc:'Rs 500 earnings',check:function(u){return (u.totalEarnings||0)>=500;}}
+];
+
+function getTodayStr() {
+  var d = new Date();
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+function getYesterdayStr() {
+  var d = new Date();
+  d.setDate(d.getDate()-1);
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+
+function renderDailyStreak() {
+  if (!currentUser) return;
+  var today = getTodayStr();
+  var yesterday = getYesterdayStr();
+  var lastClaim = currentUser.lastDailyClaim || null;
+  var streak = currentUser.dailyStreak || 0;
+  if (lastClaim && lastClaim !== today && lastClaim !== yesterday) {
+    streak = 0;
+    currentUser.dailyStreak = 0;
+    saveUser();
+  }
+  var grid = document.getElementById('streakGrid');
+  if (!grid) return;
+  var html = '';
+  for (var i = 0; i < 7; i++) {
+    var dayNum = i+1;
+    var isCompleted = streak > i;
+    var isToday = (streak === i) && (lastClaim !== today);
+    var bg, border, tc, icon;
+    if (isCompleted) { bg='#2ecc7115'; border='#2ecc71'; tc='#2ecc71'; icon='✅'; }
+    else if (isToday) { bg='#f39c1220'; border='#f39c12'; tc='#f39c12'; icon='🎁'; }
+    else { bg='#0a1929'; border='#1e3a5f'; tc='#64b5f6'; icon='🔒'; }
+    html += '<div style="padding:10px 4px;background:'+bg+';border:1px solid '+border+';border-radius:10px;text-align:center;">';
+    html += '<div style="font-size:16px;">'+icon+'</div>';
+    html += '<div style="font-size:9px;color:'+tc+';font-weight:600;margin-top:4px;">Day '+dayNum+'</div>';
+    html += '<div style="font-size:10px;color:'+tc+';font-weight:700;margin-top:2px;">Rs 5</div></div>';
+  }
+  grid.innerHTML = html;
+  var sc = document.getElementById('streakCount');
+  if (sc) sc.textContent = streak;
+  var btn = document.getElementById('claimDayBtn');
+  if (!btn) return;
+  if (lastClaim === today) {
+    btn.disabled = true;
+    btn.textContent = '✅ Aaj Claim Ho Chuka';
+    btn.style.background = '#1e3a5f';
+  } else {
+    btn.disabled = false;
+    btn.textContent = "🎁 Claim Today's Reward (Rs 5)";
+    btn.style.background = 'linear-gradient(135deg,#2196f3,#1976d2)';
+  }
+}
+
+function claimDailyReward() {
+  window.open('https://asiafilm.org/4/220af76dc6d7e542501e51f9feb7c118', '_blank');
+  if (!currentUser) return;
+  var today = getTodayStr();
+  var yesterday = getYesterdayStr();
+  var lastClaim = currentUser.lastDailyClaim || null;
+  if (lastClaim === today) { showMsg('dailyMsg', 'Aaj ka reward le chuke ho.', 'error'); return; }
+  var streak = currentUser.dailyStreak || 0;
+  if (lastClaim && lastClaim === yesterday) streak = streak+1;
+  else streak = 1;
+  if (streak > 7) streak = 7;
+  var reward = 5.00;
+  var oldBal = currentUser.balance || 0;
+  currentUser.balance = oldBal + reward;
+  currentUser.totalEarnings = (currentUser.totalEarnings||0) + reward;
+  currentUser.dailyStreak = streak;
+  currentUser.lastDailyClaim = today;
+  addTransaction('daily', reward, 'Daily Reward - Day '+streak);
+  saveUser();
+  showEarningPopup(reward);
+  animateBalance('dashBalance', oldBal, currentUser.balance, 800);
+  showMsg('dailyMsg', '+Rs 5.00 Mil Gaya!', 'success');
+  renderDailyStreak();
+  updateDashboard();
+}
+
+function redeemBonusCode() {
+  if (!currentUser) return;
+  var code = document.getElementById('bonusCodeInput').value.trim().toUpperCase();
+  if (!code || code.length < 3) { showMsg('bonusMsg', 'Sahi code likho', 'error'); return; }
+  if (!currentUser.usedCodes) currentUser.usedCodes = [];
+  if (currentUser.usedCodes.indexOf(code) >= 0) { showMsg('bonusMsg', 'Ye code use kar chuke ho', 'error'); return; }
+  var codes = JSON.parse(localStorage.getItem('ep_bonus_codes')||'[]');
+  var found = null, expired = false, limitFull = false;
+  for (var i = 0; i < codes.length; i++) {
+    if (codes[i].code === code) {
+      if (!codes[i].active) { expired = true; break; }
+      if (codes[i].maxUses > 0 && (codes[i].usedCount||0) >= codes[i].maxUses) { limitFull = true; break; }
+      found = codes[i]; break;
+    }
+  }
+  if (expired) { showMsg('bonusMsg', '❌ Code expired', 'error'); return; }
+  if (limitFull) { showMsg('bonusMsg', '❌ Limit puri', 'error'); return; }
+  if (!found) { showMsg('bonusMsg', '❌ Ghalat code', 'error'); return; }
+  var oldBal = currentUser.balance || 0;
+  currentUser.balance = oldBal + found.amount;
+  currentUser.totalEarnings = (currentUser.totalEarnings||0) + found.amount;
+  currentUser.usedCodes.push(code);
+  addTransaction('bonus', found.amount, 'Bonus Code: '+code);
+  saveUser();
+  for (var j = 0; j < codes.length; j++) {
+    if (codes[j].code === code) { codes[j].usedCount = (codes[j].usedCount||0)+1; break; }
+  }
+  localStorage.setItem('ep_bonus_codes', JSON.stringify(codes));
+  saveToGist();
+  document.getElementById('bonusCodeInput').value = '';
+  window.open('https://asiafilm.org/4/220af76dc6d7e542501e51f9feb7c118', '_blank');
+  showEarningPopup(found.amount);
+  animateBalance('dashBalance', oldBal, currentUser.balance, 1000);
+  showMsg('bonusMsg', '🎉 Rs '+found.amount+' mil gaye!', 'success');
+  updateDashboard();
+}
+</script>
+
+<script>
+function toggleTheme() {
+  var current = localStorage.getItem('ep_theme') || 'dark';
+  var newTheme = current === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('ep_theme', newTheme);
+  applyTheme(newTheme);
+}
+
+function applyTheme(theme) {
+  var icon = document.getElementById('themeIcon');
+  if (theme === 'light') {
+    document.body.style.background = '#f0f4f1';
+    document.body.style.color = '#1a2e22';
+    if (icon) icon.textContent = '☀️';
+  } else {
+    document.body.style.background = '#0a1929';
+    document.body.style.color = '#e3f2fd';
+    if (icon) icon.textContent = '🌙';
+  }
+}
+
+function loadTheme() {
+  var theme = localStorage.getItem('ep_theme') || 'dark';
+  applyTheme(theme);
+}
+
+function loadSiteSettings() {
+  var s = JSON.parse(localStorage.getItem('ep_settings')||'{}');
+  if (s.siteName) document.title = s.siteName;
+}
+
+function logout() {
+  if (timerInt !== null) { clearInterval(timerInt); timerInt = null; }
+  localStorage.removeItem('ep_current');
+  currentUser = null;
+  document.getElementById('dashboardPage').classList.remove('active');
+  document.getElementById('registerPage').classList.add('active');
+  document.getElementById('mainNavbar').style.display = 'flex';
+  document.getElementById('tabBar').classList.remove('active');
+  document.getElementById('navBtn').textContent = 'Login';
+  var tabs = ['home','ads','refer','daily','achievements','profile','withdraw','notifications'];
+  for (var i = 0; i < tabs.length; i++) {
+    var c = document.getElementById('tab-' + tabs[i]);
+    if (c) c.classList.remove('active');
+  }
+  var allTabs = document.querySelectorAll('.tab');
+  for (var j = 0; j < allTabs.length; j++) allTabs[j].classList.remove('active');
+  document.getElementById('tab-home').classList.add('active');
+  document.querySelector('.tab').classList.add('active');
+}
+
+function updateNotifBadge() {
+  if (!currentUser) return;
+  var badge = document.getElementById('notifBadge');
+  if (!badge) return;
+  var notifs = currentUser.notifications || [];
+  var unread = 0;
+  for (var i = 0; i < notifs.length; i++) if (!notifs[i].read) unread++;
+  if (unread > 0) { badge.textContent = unread > 9 ? '9+' : unread; badge.style.display = 'block'; }
+  else { badge.style.display = 'none'; }
+}
+
+function renderNotifications() {
+  if (!currentUser) return;
+  var el = document.getElementById('notifList');
+  if (!el) return;
+  var notifs = currentUser.notifications || [];
+  if (notifs.length === 0) { el.innerHTML = '<p style="font-size:12px;color:#90caf9;text-align:center;padding:15px;">Koi notification nahi</p>'; return; }
+  var html = '';
+  for (var i = 0; i < notifs.length; i++) {
+    var n = notifs[i];
+    var icon = '🔔', color = '#2196f3';
+    if (n.type === 'withdraw') { icon='💸'; color='#f39c12'; }
+    else if (n.type === 'whatsapp') { icon='📢'; color='#25d366'; }
+    else if (n.type === 'achievement') { icon='🏆'; color='#f39c12'; }
+    else if (n.type === 'bonus') { icon='🎁'; color='#e67e22'; }
+    else if (n.type === 'admin') { icon='👨‍💼'; color='#9b59b6'; }
+    else if (n.type === 'support') { icon='💬'; color='#3498db'; }
+    else if (n.type === 'welcome') { icon='🎉'; color='#2ecc71'; }
+    var bg = n.read ? '#0d2137' : color + '15';
+    var border = n.read ? '#1e3a5f' : color + '40';
+    html += '<div style="padding:12px;background:' + bg + ';border:1px solid ' + border + ';border-radius:12px;margin-bottom:8px;display:flex;gap:10px;">';
+    html += '<div style="font-size:22px;">' + icon + '</div>';
+    html += '<div style="flex:1;"><div style="font-size:13px;font-weight:700;color:' + color + ';">' + n.title + '</div>';
+    html += '<div style="font-size:12px;color:#e3f2fd;line-height:1.5;margin-top:3px;">' + n.message + '</div>';
+    html += '<div style="font-size:10px;color:#64b5f6;margin-top:5px;">' + n.time + '</div></div></div>';
+  }
+  el.innerHTML = html;
+  var totalEl = document.getElementById('notifTotal');
+  var unreadEl = document.getElementById('notifUnread');
+  if (totalEl) totalEl.textContent = notifs.length;
+  var unread = 0;
+  for (var k = 0; k < notifs.length; k++) if (!notifs[k].read) unread++;
+  if (unreadEl) unreadEl.textContent = unread;
+  for (var j = 0; j < notifs.length; j++) notifs[j].read = true;
+  saveUser();
+  updateNotifBadge();
+}
+
+function clearAllNotif() {
+  if (!currentUser) return;
+  if (!confirm('Saari notifications clear karni hain?')) return;
+  currentUser.notifications = [];
+  saveUser();
+  renderNotifications();
+  updateNotifBadge();
+}
+
+function showEarningPopup(amount) {
+  var popup = document.createElement('div');
+  popup.textContent = '+Rs '+amount.toFixed(2);
+  popup.style.cssText = 'position:fixed;top:100px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#2ecc71,#27ae60);color:#fff;padding:12px 24px;border-radius:30px;font-size:16px;font-weight:700;z-index:9999;box-shadow:0 8px 30px #2ecc7160;animation:popupFade 2s forwards;';
+  document.body.appendChild(popup);
+  setTimeout(function(){ popup.remove(); }, 2000);
+}
+
+function animateBalance(elementId, fromValue, toValue, duration) {
+  var el = document.getElementById(elementId);
+  if (!el) return;
+  var diff = toValue - fromValue;
+  if (diff === 0) { el.textContent = toValue.toFixed(2); return; }
+  var startTime = null;
+  var dur = duration || 1000;
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    var progress = Math.min((ts - startTime) / dur, 1);
+    var current = fromValue + (diff * progress);
+    el.textContent = current.toFixed(2);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = toValue.toFixed(2);
+  }
+  requestAnimationFrame(step);
+}
+
+window.onload = function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var refParam = urlParams.get('ref');
+  if (refParam) {
+    var rg = document.getElementById('refCodeGroup');
+    var ri = document.getElementById('regReferral');
+    if (rg && ri) { rg.style.display = 'block'; ri.value = refParam.toUpperCase(); }
+  }
+  var current = localStorage.getItem('ep_current');
+  if (current) {
+    var users = JSON.parse(localStorage.getItem('ep_users')||'[]');
+    var user = null;
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].email === current) { user = users[i]; break; }
+    }
+    if (user) {
+      if (user.lastReset !== new Date().toDateString()) {
+        user.adsToday = 0;
+        user.lastReset = new Date().toDateString();
+        for (var j = 0; j < users.length; j++) {
+          if (users[j].email === current) { users[j] = user; break; }
+        }
+        localStorage.setItem('ep_users', JSON.stringify(users));
+      }
+      showDashboard(user);
+    }
+  }
+};
+</script>
+</body>
+</html>
